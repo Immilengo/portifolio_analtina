@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analtina Veiga | Cabeleireira Profissional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&display=swap');
+        
+        :root {
+            --pink-accent: #ec4899;
+        }
+        
+        .tail-container {
+            font-family: 'Inter', system_ui, sans-serif;
+        }
+        
+        .heading-font {
+            font-family: 'Playfair Display', sans-serif;
+        }
+
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)), url('https://picsum.photos/id/1015/2000/1200');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .gallery-img {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .gallery-img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.3);
+        }
+
+        .service-card {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .service-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgb(236 72 153 / 0.25);
+        }
+
+        .modal {
+            animation: modalPop 0.3s ease forwards;
+        }
+        
+        @keyframes modalPop {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+    </style>
+</head>
+<body class="tail-container bg-zinc-950 text-white overflow-x-hidden">
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 bg-zinc-950/90 backdrop-blur-lg border-b border-zinc-800 z-50">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-pink-500 to-rose-600 rounded-full flex items-center justify-center text-white font-bold text-2xl heading-font">A</div>
+                <div>
+                    <h1 class="heading-font text-2xl tracking-tight">Analtina Veiga</h1>
+                    <p class="text-xs text-pink-400 -mt-1">Cabelos • Beleza • Arte</p>
+                </div>
+            </div>
+            
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="#inicio" onclick="smoothScrollTo('inicio')" class="hover:text-pink-400 transition-colors">Início</a>
+                <a href="#sobre" onclick="smoothScrollTo('sobre')" class="hover:text-pink-400 transition-colors">Sobre Mim</a>
+                <a href="#servicos" onclick="smoothScrollTo('servicos')" class="hover:text-pink-400 transition-colors">Serviços</a>
+                <a href="#galeria" onclick="smoothScrollTo('galeria')" class="hover:text-pink-400 transition-colors">Galeria</a>
+                <a href="#contato" onclick="smoothScrollTo('contato')" class="hover:text-pink-400 transition-colors">Contato</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <a href="https://wa.me/244938753706" target="_blank" 
+                   class="hidden sm:flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-white px-6 py-3 rounded-2xl text-sm font-semibold transition-all">
+                    <i class="fa-brands fa-whatsapp"></i>
+                    <span>Agendar</span>
+                </a>
+                <!-- Mobile Hamburger -->
+                <button id="mobile-menu-btn" class="md:hidden text-2xl">
+                    <i class="fa-solid fa-bars"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-zinc-950 border-t border-zinc-800">
+            <div class="flex flex-col px-6 py-8 gap-6 text-lg">
+                <a href="#inicio" onclick="toggleMobileMenu()" class="hover:text-pink-400">Início</a>
+                <a href="#sobre" onclick="toggleMobileMenu()" class="hover:text-pink-400">Sobre Mim</a>
+                <a href="#servicos" onclick="toggleMobileMenu()" class="hover:text-pink-400">Serviços</a>
+                <a href="#galeria" onclick="toggleMobileMenu()" class="hover:text-pink-400">Galeria</a>
+                <a href="#contato" onclick="toggleMobileMenu()" class="hover:text-pink-400">Contato</a>
+                <a href="https://wa.me/244938753706" target="_blank" 
+                   class="mt-4 bg-emerald-500 text-white py-4 rounded-3xl text-center font-semibold flex items-center justify-center gap-3">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    Agendar pelo WhatsApp
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section id="inicio" class="hero-bg min-h-screen flex items-center pt-20">
+        <div class="max-w-7xl mx-auto px-6 text-center">
+            <div class="max-w-2xl mx-auto">
+                <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md px-6 py-2 rounded-3xl text-sm mb-8 border border-white/20">
+                    <div class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
+                    Luanda, Angola • Serviços ao domicílio
+                </div>
+                
+                <h1 class="heading-font text-7xl md:text-8xl leading-none tracking-tighter mb-6">
+                    ANALTINA<br>VEIGA
+                </h1>
+                <p class="text-2xl md:text-3xl text-pink-300 font-light mb-10">
+                    Transformo cabelos.<br>Elevo belezas.
+                </p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#servicos" onclick="smoothScrollTo('servicos')" 
+                       class="bg-white text-zinc-950 hover:bg-pink-100 px-10 py-5 rounded-3xl font-semibold text-lg transition-all flex items-center justify-center gap-3">
+                        Ver meus serviços
+                    </a>
+                    <a href="https://wa.me/244938753706?text=Olá%20Analtina,%20gostaria%20de%20agendar%20um%20serviço" target="_blank"
+                       class="border-2 border-white hover:bg-white/10 px-10 py-5 rounded-3xl font-semibold text-lg transition-all flex items-center justify-center gap-3">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        Agendar agora
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center text-xs tracking-widest">
+            <div class="mb-2">ROLE PARA BAIXO</div>
+            <div class="w-px h-12 bg-gradient-to-b from-transparent via-white/50 to-transparent"></div>
+        </div>
+    </section>
+
+    <!-- SOBRE MIM -->
+    <section id="sobre" class="py-24 bg-zinc-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid md:grid-cols-12 gap-16 items-center">
+                <!-- Foto de perfil -->
+                <div class="md:col-span-5">
+                    <div class="relative">
+                        <img id="profile-photo" 
+                             src="static/image/milu.jpeg" 
+                             alt="Analtina Veiga - Cabeleireira Profissional"
+                             class="rounded-3xl shadow-2xl w-full object-cover aspect-[4/5]">
+                        <div class="absolute -bottom-6 -right-6 bg-zinc-950 border border-pink-500 rounded-3xl px-8 py-6 text-center">
+                            <div class="text-pink-400 text-sm font-medium">Vários clientes felizes</div>
+                            <div class="text-4xl font-bold heading-font">+3 Anos como cabeleireira</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Texto -->
+                <div class="md:col-span-7">
+                    <div class="max-w-xl">
+                        <span class="inline-block bg-pink-500/10 text-pink-400 text-xs font-semibold tracking-widest px-6 py-3 rounded-3xl mb-6">QUEM SOU EU</span>
+                        
+                        <h2 class="heading-font text-6xl leading-none tracking-tight mb-8">
+                            Cabeleireira apaixonada por beleza autêntica
+                        </h2>
+                        
+                        <div class="prose prose-invert text-lg leading-relaxed text-zinc-300">
+                            <p class="mb-6">
+                                Olá, sou <strong class="text-white">Analtina Veiga</strong>, cabeleireira profissional com sede em Luanda. 
+                                Com dedicação total à arte dos cabelos, especializo-me em criar looks personalizados que celebram a beleza natural de cada mulher.
+                            </p>
+                            <p>
+                                No meu salão acolhedor ou diretamente na sua casa, ofereço serviços de alta qualidade: tranças impecáveis, puchinhos trabalhados, penteados elegantes, aplicações de cabelo e muito mais. 
+                                Cada cliente sai não só com um cabelo bonito, mas com mais confiança e brilho.
+                            </p>
+                        </div>
+
+                        <div class="mt-12 grid grid-cols-3 gap-8 text-center">
+                            <div>
+                                <div class="text-4xl font-bold text-pink-400">3+</div>
+                                <div class="text-sm text-zinc-400">Anos de experiência</div>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-bold text-pink-400">20+</div>
+                                <div class="text-sm text-zinc-400">Estilos exclusivos</div>
+                            </div>
+                            <div>
+                                <div class="text-4xl font-bold text-pink-400">∞</div>
+                                <div class="text-sm text-zinc-400">Criatividade</div>
+                            </div>
+                        </div>
+
+                        <a href="#contato" onclick="smoothScrollTo('contato')" 
+                           class="mt-12 inline-flex items-center gap-4 group">
+                            <div class="w-14 h-px bg-white group-hover:bg-pink-400 transition-colors"></div>
+                            <span class="uppercase text-sm tracking-widest font-medium">Conheça meu trabalho</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVIÇOS -->
+    <section id="servicos" class="py-24">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-pink-400 text-sm font-semibold tracking-widest">O QUE OFEREÇO</span>
+                <h2 class="heading-font text-5xl mt-3">Serviços Premium</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Card 1 -->
+                <div class="service-card bg-zinc-900 rounded-3xl overflow-hidden">
+                    <img src="static/image/traba1.jpeg" alt="Aplicação Personalizada" 
+                         class="w-full h-64 object-cover">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold mb-3">Aplicação Personalizada</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed">Extensões, tecidos e apliques feitos com técnica precisa e materiais de alta qualidade para um resultado natural e duradouro.</p>
+                        <div class="mt-6 text-pink-400 font-medium flex items-center gap-2">
+                            Saiba mais <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="service-card bg-zinc-900 rounded-3xl overflow-hidden">
+                    <img src="static/image/colagemtripl.jpeg" alt="Tranças" 
+                         class="w-full h-64 object-cover">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold mb-3">Tranças</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed">Box braids, knotless, twists, cornrows e todos os estilos que você ama. Feitas com paciência e precisão.</p>
+                        <div class="mt-6 text-pink-400 font-medium flex items-center gap-2">
+                            Saiba mais <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="service-card bg-zinc-900 rounded-3xl overflow-hidden">
+                    <img src="static/image/trab4.jpeg" alt="Puchinhos" 
+                         class="w-full h-64 object-cover">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold mb-3">Puchinhos Trabalhados</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed">Penteados criativos, buns, twists e estilos personalizados para festas, casamentos ou dia a dia elegante.</p>
+                        <div class="mt-6 text-pink-400 font-medium flex items-center gap-2">
+                            Saiba mais <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="service-card bg-zinc-900 rounded-3xl overflow-hidden">
+                    <img src="static/image/trab5.jpeg" alt="Penteados Diversos" 
+                         class="w-full h-64 object-cover">
+                    <div class="p-8">
+                        <h3 class="text-2xl font-semibold mb-3">Penteados Diversos</h3>
+                        <p class="text-zinc-400 text-sm leading-relaxed">Cachos definidos, alisados, colorações e penteados para todas as ocasiões. Atendo também ao domicílio!</p>
+                        <div class="mt-6 text-pink-400 font-medium flex items-center gap-2">
+                            Saiba mais <i class="fa-solid fa-arrow-right text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-16 text-center">
+                <p class="text-zinc-400 max-w-md mx-auto">Todos os serviços são feitos com produtos profissionais e técnica atualizada. Preços sob consulta.</p>
+                <a href="https://wa.me/244938753706" target="_blank" 
+                   class="mt-8 inline-block bg-pink-500 hover:bg-pink-600 px-12 py-5 rounded-3xl font-semibold text-lg transition-colors">
+                    Quero meu orçamento personalizado
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERIA -->
+    <section id="galeria" class="py-24 bg-zinc-900">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <span class="text-pink-400 text-sm font-semibold tracking-widest">MEUS TRABALHOS</span>
+                    <h2 class="heading-font text-5xl mt-3">Galeria de Transformações</h2>
+                </div>
+                <a href="https://wa.me/244938753706?text=Quero%20fazer%20um%20estilo%20como%20estes" target="_blank"
+                   class="hidden md:flex items-center gap-3 text-sm font-medium hover:text-pink-400 transition-colors">
+                    Quer algo parecido? 
+                    <span class="text-2xl">→</span>
+                </a>
+            </div>
+
+            <!-- Grid da galeria (masonry-like com Tailwind) -->
+            <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+                <!-- Imagem 1: Perfil elegante -->
+                <div class="break-inside-avoid">
+                    <img onclick="openModal(this)" 
+                         src="static/image/flor2.jpeg" 
+                         alt="Analtina Veiga look profissional" 
+                         class="gallery-img w-full rounded-3xl cursor-pointer">
+                </div>
+                
+                <!-- Imagem 2: Tranças com vermelho -->
+                <div class="break-inside-avoid">
+                    <img onclick="openModal(this)" 
+                         src="static/image/milucabelo.jpeg" 
+                         alt="Tranças longas com ponta vermelha" 
+                         class="gallery-img w-full rounded-3xl cursor-pointer">
+                </div>
+                
+                <!-- Imagem 3: Mulher com óculos e tranças -->
+                <div class="break-inside-avoid">
+                    <img onclick="openModal(this)" 
+                         src="static/image/WhatsApp Image 2026-02-20 at 3.21.58 PM.jpeg" 
+                         alt="Tranças finas com óculos" 
+                         class="gallery-img w-full rounded-3xl cursor-pointer">
+                </div>
+                
+                <!-- Imagem 4: Puchinho com rosa -->
+                <div class="break-inside-avoid">
+                    <img onclick="openModal(this)" 
+                         src="static/image/trab3.jpg" 
+                         alt="Penteado puchinho elegante" 
+                         class="gallery-img w-full rounded-3xl cursor-pointer">
+                </div>
+                
+                <!-- Imagem 5: Mulher com camisa branca e curls -->
+                <div class="break-inside-avoid">
+                    <img onclick="openModal(this)" 
+                         src="static/image/WhatsApp Image 2026-02-20 at 3.21.54 PM.jpeg" 
+                         alt="Cachos definidos com camisa branca" 
+                         class="gallery-img w-full rounded-3xl cursor-pointer">
+                </div>
+                
+                <!-- Imagem 6: Mulher com blazer preto (a foto principal enviada) -->
+                <div class="break-inside-avoid">
+                    <img onclick="openModal(this)" 
+                         src="static/image/WhatsApp Image 2026-02-20 at 3.48.22 PM.jpeg" 
+                         alt="Analtina Veiga em blazer" 
+                         class="gallery-img w-full rounded-3xl cursor-pointer">
+                </div>
+                
+                <!-- Imagem 7: Mulher com t-shirt Feliz Aniversário -->
+                <div class="break-inside-avoid">
+                    <img onclick="openModal(this)" 
+                         src="static/image/traba6.jpeg" 
+                         alt="Penteado com t-shirt rosa" 
+                         class="gallery-img w-full rounded-3xl cursor-pointer">
+                </div>
+                
+                <!-- Espaço reservado para futuros projetos -->
+                <div class="break-inside-avoid bg-zinc-800 rounded-3xl h-[420px] flex items-center justify-center border border-dashed border-zinc-700 hover:border-pink-400 transition-colors group">
+                    <div class="text-center">
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-zinc-700 group-hover:bg-pink-500/10 flex items-center justify-center text-3xl transition-colors">📸</div>
+                        <p class="text-zinc-400 group-hover:text-pink-300">Novo trabalho<br>em breve</p>
+                    </div>
+                </div>
+                
+               <!-- <div class="break-inside-avoid bg-zinc-800 rounded-3xl h-[420px] flex items-center justify-center border border-dashed border-zinc-700 hover:border-pink-400 transition-colors group">
+                    <div class="text-center">
+                        <div class="w-16 h-16 mx-auto mb-4 rounded-2xl bg-zinc-700 group-hover:bg-pink-500/10 flex items-center justify-center text-3xl transition-colors">📸</div>
+                        <p class="text-zinc-400 group-hover:text-pink-300">Adicione aqui<br>seu próximo projeto</p>
+                    </div>
+                </div>-->
+            </div>
+
+            <div class="text-center mt-16">
+                <button onclick="document.getElementById('contato').scrollIntoView({ behavior: 'smooth' })" 
+                        class="text-sm uppercase tracking-widest border border-white/30 hover:border-pink-400 px-8 py-4 rounded-3xl transition-colors">
+                    Quer transformar seu cabelo? Fale comigo →
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" class="py-24 bg-black">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16">
+            <div>
+                <h2 class="heading-font text-5xl mb-8">Vamos criar algo lindo juntas?</h2>
+                <p class="text-xl text-zinc-400 max-w-md">Envie uma mensagem ou ligue diretamente. Respondo em até 2 horas.</p>
+                
+                <div class="mt-16 space-y-10">
+                    <div class="flex gap-6">
+                        <div class="w-12 h-12 bg-pink-500/10 rounded-2xl flex items-center justify-center text-2xl">📍</div>
+                        <div>
+                            <div class="font-semibold">Salão em Luanda</div>
+                            <div class="text-zinc-400">Bairro Golf 2 (confirme localização exata no WhatsApp)</div>
+                        </div>
+                    </div>
+                    <div class="flex gap-6">
+                        <div class="w-12 h-12 bg-pink-500/10 rounded-2xl flex items-center justify-center text-2xl">📱</div>
+                        <div>
+                            <a href="https://wa.me/244938753706" target="_blank" class="font-semibold hover:text-pink-400 transition-colors">(244) 938 753 706</a>
+                            <div class="text-emerald-400 text-sm">WhatsApp preferencial</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulário -->
+            <form onsubmit="handleSubmit(event)" class="space-y-8">
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-xs font-medium text-zinc-400 mb-2">Nome completo</label>
+                        <input type="text" id="nome" required 
+                               class="w-full bg-zinc-900 border border-zinc-700 focus:border-pink-400 rounded-3xl px-7 py-5 outline-none transition-colors">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-medium text-zinc-400 mb-2">Telefone</label>
+                        <input type="tel" id="telefone" required 
+                               class="w-full bg-zinc-900 border border-zinc-700 focus:border-pink-400 rounded-3xl px-7 py-5 outline-none transition-colors">
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-xs font-medium text-zinc-400 mb-2">Qual serviço deseja?</label>
+                    <select id="servico" required
+                            class="w-full bg-zinc-900 border border-zinc-700 focus:border-pink-400 rounded-3xl px-7 py-5 outline-none transition-colors">
+                        <option value="">Escolha um serviço</option>
+                        <option value="Tranças">Tranças</option>
+                        <option value="Puchinhos">Puchinhos Trabalhados</option>
+                        <option value="Aplicação">Aplicação Personalizada</option>
+                        <option value="Penteado">Penteado Especial</option>
+                        <option value="Outro">Outro (especifique na mensagem)</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label class="block text-xs font-medium text-zinc-400 mb-2">Mensagem / Data preferida</label>
+                    <textarea id="mensagem" rows="5" required
+                              class="w-full bg-zinc-900 border border-zinc-700 focus:border-pink-400 rounded-3xl px-7 py-5 outline-none transition-colors resize-none"></textarea>
+                </div>
+                
+                <button type="submit"
+                        class="w-full bg-gradient-to-r from-pink-500 to-rose-600 py-6 rounded-3xl font-semibold text-lg hover:brightness-110 transition-all">
+                    ENVIAR MENSAGEM
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-zinc-950 border-t border-zinc-800 py-16">
+        <div class="max-w-7xl mx-auto px-6 text-center text-xs text-zinc-500">
+            <div class="flex justify-center gap-8 mb-8">
+                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-instagram text-2xl"></i></a>
+                <a href="#" class="hover:text-white transition-colors"><i class="fa-brands fa-facebook text-2xl"></i></a>
+                <a href="https://wa.me/244938753706" target="_blank" class="hover:text-white transition-colors"><i class="fa-brands fa-whatsapp text-2xl"></i></a>
+            </div>
+            <p>© 2026 Analtina Veiga • Todos os direitos reservados</p>
+            <p class="mt-2">Feito com ❤️ para as mulheres que merecem brilhar</p>
+        </div>
+    </footer>
+
+    <!-- MODAL GALERIA -->
+    <div id="image-modal" class="hidden fixed inset-0 bg-black/95 z-[100] flex items-center justify-center p-6">
+        <button onclick="closeModal()" 
+                class="absolute top-8 right-8 text-white text-4xl hover:text-pink-400 transition-colors z-10">✕</button>
+        <img id="modal-image" 
+             class="max-h-[90vh] max-w-[95vw] object-contain rounded-3xl" 
+             alt="Imagem ampliada">
+    </div>
+
+    <script>
+        // Tailwind config
+        function initTailwind() {
+            // Já configurado via CDN + CSS
+        }
+
+        // Smooth scroll
+        function smoothScrollTo(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: "smooth" });
+            }
+        }
+
+        // Mobile menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('mobile-menu-btn');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+            } else {
+                menu.classList.add('hidden');
+                icon.innerHTML = '<i class="fa-solid fa-bars"></i>';
+            }
+        }
+
+        // Modal functions
+        let currentModalImg = null;
+        
+        function openModal(imgElement) {
+            currentModalImg = imgElement;
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-image');
+            
+            modalImg.src = imgElement.src;
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+            
+            // Prevent body scroll
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal() {
+            const modal = document.getElementById('image-modal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+            document.body.style.overflow = 'visible';
+        }
+
+        // Form handler (simulado)
+        function handleSubmit(e) {
+            e.preventDefault();
+            
+            const nome = document.getElementById('nome').value;
+            
+            alert(`✅ Obrigada, ${nome.split(' ')[0]}! Sua mensagem foi enviada com sucesso.\n\nAnaltina entrará em contato em breve pelo WhatsApp.`);
+            
+            // Limpa formulário
+            e.target.reset();
+            
+            // Fecha modal se aberto (opcional)
+            if (!document.getElementById('image-modal').classList.contains('hidden')) {
+                closeModal();
+            }
+        }
+
+        // Keyboard escape for modal
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") {
+                const modal = document.getElementById('image-modal');
+                if (!modal.classList.contains('hidden')) {
+                    closeModal();
+                }
+            }
+        });
+
+        // Initialize everything
+        window.onload = function() {
+            initTailwind();
+            
+            // Close mobile menu when clicking links (already handled)
+            
+            // Demo: replace placeholder images with your real ones
+            console.log('%cPortfolio Analtina Veiga carregado com sucesso! 🎉\nSubstitua as imagens pelos seus arquivos hospedados (ImgBB, Cloudinary, etc.).', 
+                        'color:#ec4899; font-family:monospace');
+        };
+    </script>
+</body>
+</html>
